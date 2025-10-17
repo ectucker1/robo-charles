@@ -1,7 +1,8 @@
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import { Keyv } from 'keyv';
+import type { Ctx, Command } from './context.js';
 
-import { default as commands } from './commands.mjs';
+import { default as commands } from './commands.js';
 
 const discordClient = new Client({ intents: [GatewayIntentBits.Guilds ]});
 
@@ -16,15 +17,15 @@ discordClient.once(Events.ClientReady, (readyClient) => {
     console.log(`Discord client ready! Logged in as ${readyClient.user.tag}`);
 });
 
-discordClient.commands = new Collection();
+const commandMap = new Collection<string, Command>();
 for (const command of commands) {
-    discordClient.commands.set(command.data.name, command);
+    commandMap.set(command.data.name, command);
 }
 
 discordClient.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     
-    const command = interaction.client.commands.get(interaction.commandName);
+    const command = commandMap.get(interaction.commandName);
 
     if (!command) {
         console.error('No command matching ${interaction.commandName} was found.');

@@ -1,12 +1,14 @@
-import { default as pingCommand } from './commands/ping.mjs';
-import { default as reminderCommand } from './commands/reminder.mjs';
+import type { Command } from './context.js'
+
+import { default as pingCommand } from './commands/ping.js';
+import { default as reminderCommand } from './commands/reminder.js';
 
 const srcCommands = [
     pingCommand,
     reminderCommand
 ];
 
-let validCommands = []
+let validCommands: Command[] = []
 for (const command of srcCommands) {
     if ('data' in command && 'execute' in command) {
         validCommands.push(command);

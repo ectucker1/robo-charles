@@ -2,11 +2,12 @@
   "name": "robo-charles",
   "version": "0.0.1",
   "description": "A Discord bot for me and my girlfriend.",
-  "main": "src/index.mjs",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env .",
-    "deploy-commands": "node --env-file=.env src/deploy-commands.mjs",
+    "start": "tsc && node --env-file=.env .",
+    "deploy-commands": "tsc && node --env-file=.env src/deploy-commands.mjs",
     "lint": "eslint ."
   },
   "repository": {
@@ -28,6 +29,8 @@
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "eslint": "^9.37.0",
-    "globals": "^16.4.0"
+    "globals": "^16.4.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.1"
   }
 }

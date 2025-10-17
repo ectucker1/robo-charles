@@ -5,6 +5,8 @@
 # JavaScript Source Files
 *.js text eol=lf
 *.mjs text eol=lf
+*.ts text eol=lf
+*.mts text eol=lf
 
 # HTML, CSS, and Templates
 *.html text diff=html eol=lf

@@ -1,4 +1,5 @@
-import { SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, SlashCommandBuilder, type Interaction } from "discord.js";
+import type { Ctx } from "../context.js";
 
 const data = new SlashCommandBuilder()
     .setName('reminder')
@@ -37,7 +38,7 @@ const data = new SlashCommandBuilder()
             )
     );
 
-const execute = async (interaction, ctx) => {
+const execute = async (interaction: CommandInteraction, ctx: Ctx) => {
     await interaction.reply({ content: 'Registering reminder...' });
 };
 

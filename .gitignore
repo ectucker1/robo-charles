@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# TypeScript Compiler Output
+dist/
+
 # Environment Secrets
 .env
 config.json
