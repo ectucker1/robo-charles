@@ -1,8 +1,16 @@
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
+import { Keyv } from 'keyv';
 
 import { default as commands } from './commands.mjs';
 
 const discordClient = new Client({ intents: [GatewayIntentBits.Guilds ]});
+
+const keyv = new Keyv();
+
+const ctx = {
+    discordClient,
+    keyv
+};
 
 discordClient.once(Events.ClientReady, (readyClient) => {
     console.log(`Discord client ready! Logged in as ${readyClient.user.tag}`);
@@ -24,7 +32,7 @@ discordClient.on(Events.InteractionCreate, async (interaction) => {
     }
 
     try {
-        await command.execute(interaction);
+        await command.execute(interaction, ctx);
     } catch (error) {
         console.error(error);
         if (interaction.replied || interaction.deferred) {

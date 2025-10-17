@@ -1,7 +1,9 @@
 import { default as pingCommand } from './commands/ping.mjs';
+import { default as reminderCommand } from './commands/reminder.mjs';
 
 const srcCommands = [
-    pingCommand
+    pingCommand,
+    reminderCommand
 ];
 
 let validCommands = []

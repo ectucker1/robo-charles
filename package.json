@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --env-file=.env .",
-    "deploy-commands": "node --env-file=.env src/deploy-commands.mjs", 
+    "deploy-commands": "node --env-file=.env src/deploy-commands.mjs",
     "lint": "eslint ."
   },
   "repository": {
@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/ectucker1/robo-charles#readme",
   "dependencies": {
-    "discord.js": "^14.23.2"
+    "@keyv/mysql": "^2.1.6",
+    "cron": "^4.3.3",
+    "discord.js": "^14.23.2",
+    "keyv": "^5.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
