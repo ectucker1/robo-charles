@@ -1,0 +1,44 @@
+# Normalize to LF line endings by default
+* text=auto
+* eol=lf
+
+# JavaScript Source Files
+*.js text eol=lf
+*.mjs text eol=lf
+
+# HTML, CSS, and Templates
+*.html text diff=html eol=lf
+*.css text diff=css eol=lf
+
+# Shell scripts
+*.bash text eol=lf
+*.fish text eol=lf
+*.sh text eol=lf
+*.zsh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Misc text files
+*.json text eol=lf
+*.ini text eol=lf
+*.puml text eol=lf
+*.txt text eol=lf
+*.md text diff=markdown eol=lf
+
+# Images
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.hdr filter=lfs diff=lfs merge=lfs -text
+*.exr filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text
+
+# Sound Files
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text
