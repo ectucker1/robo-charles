@@ -1,12 +1,13 @@
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import { Keyv } from 'keyv';
+import { KeyvSqlite } from '@keyv/sqlite';
 import type { Ctx, Command } from './context.js';
 
 import { default as commands } from './commands.js';
 
 const discordClient = new Client({ intents: [GatewayIntentBits.Guilds ]});
 
-const keyv = new Keyv();
+const keyv = new Keyv(new KeyvSqlite('sqlite://data.sqlite'));
 
 const ctx = {
     discordClient,
@@ -28,7 +29,7 @@ discordClient.on(Events.InteractionCreate, async (interaction) => {
     const command = commandMap.get(interaction.commandName);
 
     if (!command) {
-        console.error('No command matching ${interaction.commandName} was found.');
+        console.error(`No command matching ${interaction.commandName} was found.`);
         return;
     }
 
@@ -50,4 +51,8 @@ discordClient.on(Events.InteractionCreate, async (interaction) => {
     }
 });
 
-discordClient.login(process.env.DISCORD_TOKEN);
+await discordClient.login(process.env.DISCORD_TOKEN);
+
+for (const command of commands) {
+    await command.start(ctx);
+}
