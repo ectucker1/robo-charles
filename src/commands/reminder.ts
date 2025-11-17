@@ -203,7 +203,7 @@ const start = async (ctx: Ctx) => {
         }
         
         lastTick = tick;
-    }, 1000)
+    }, 5000)
 };
 
 export default { data, execute, start };
