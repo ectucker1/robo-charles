@@ -26,6 +26,7 @@
     "@keyv/sqlite": "^4.0.6",
     "cron": "^4.3.3",
     "discord.js": "^14.23.2",
+    "dotenv": "^17.2.3",
     "keyv": "^5.5.3"
   },
   "devDependencies": {

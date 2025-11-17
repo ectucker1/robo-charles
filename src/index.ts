@@ -5,6 +5,9 @@ import type { Ctx, Command } from './context.js';
 
 import { default as commands } from './commands.js';
 
+import { default as dotenv } from 'dotenv';
+dotenv.config();
+
 const discordClient = new Client({ intents: [GatewayIntentBits.Guilds ]});
 
 const keyv = new Keyv(new KeyvSqlite('sqlite://data.sqlite'));
